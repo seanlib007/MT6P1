@@ -1,0 +1,35 @@
+import sympy as sp
+import numpy as np
+
+def check_dependance(S,dim):
+    var=sp.symbols(f'a:{len(S)}')
+    m = 0
+    for i,v in enumerate(var):
+        m=m+v*S[i]
+        print(m)
+    scalars=sp.solve(m,var)
+    print(scalars)
+    flag = 0
+    for x in scalars:
+        print(scalars[x])
+        if scalars[x] != 0:
+            flag = 1
+    if flag == 0:
+        print("The vectors are linearly independent")
+        if dim==len(scalars):
+            print("The given set",S," is basis of the vector space")
+        else:
+            print("The given set ",S,"is not basis of the vector space")
+    elif flag == 1:
+        print("The vectors are linearly dependent\n Hence not a bisis")  
+        
+        
+S0 = np.array([(1,0,0,-1),(0,1,0,-1),(0,0,1,-1),(0,0,0,1)])
+check_dependance(S0,4)
+
+S2=np.array([(1,1,0),(0,1,1),(2,1,-1)])
+check_dependance(S2,3)
+
+x=sp.symbols('x')
+S1=np.array([1+x+x**2,x+x**2,x**2])
+check_dependance(S1,3)
