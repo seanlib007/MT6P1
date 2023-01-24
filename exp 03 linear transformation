@@ -42,7 +42,7 @@ def rnk_null(M,dom):
         print("The rank nullity theorem is verified")
         return True
     else:
-        print("YOU ARE OBVIOUSLY A MISTAKE beacuse rank nullity theorem has to be ")
+        print("YOU OBVIOUSLY made a MISTAKE beacuse rank nullity theorem has to be ")
         return False
      
 01.
