@@ -1,0 +1,50 @@
+##part 01
+import sympy as sp
+import numpy as np
+def linear(T,dom):
+    x=np.array(sp.symbols(f'x:{dom}'))
+    y=np.array(sp.symbols(f'y:{dom}'))
+    c=sp.symbols('c')
+    lhs=T(c*x+y)
+    rhs=c*T(x)+T(y)
+    lhs=[sp.expand(i) for i in lhs]
+    print(f'T(c*x+y)={lhs}')
+    rhs=[sp.expand(i) for i in rhs]
+    print(f'c*T(x)+T(y)={rhs}')
+    if lhs==rhs:
+        print("The given map is a linear transformation")
+        return True
+    else:
+        print("The given map is not a linear transformation")
+        return False
+        
+1.
+def T(v):
+    return np.array([v[0],v[0]+2*v[1]])
+linear(T,2)
+
+2.
+def T(v):
+    return np.array([v[0]-v[1],2*v[2],1])
+linear(T,3)
+
+
+## part 02
+import sympy as sp
+def rnk_null(M,dom):
+    rank=M.rank()
+    B=M.rref()
+    print("The range og M is spanned by the first",rank,"rows of the matrix",B[0])
+    N=M.transpose().nullspace()
+    print("The nullspace of M is spanned by the columns of ",N)
+    nullity=len(N)
+    if dom==rank+nullity:
+        print("The rank nullity theorem is verified")
+        return True
+    else:
+        print("YOU ARE OBVIOUSLY A MISTAKE beacuse rank nullity theorem has to be ")
+        return False
+     
+01.
+M=sp.Matrix([[1,-1,0],[2,0,1],[1,1,1]])
+rnk_null(M,3)
