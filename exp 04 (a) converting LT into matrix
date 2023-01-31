@@ -1,0 +1,24 @@
+##MAIN DEFINATION
+
+import numpy as np
+def mat_of_lt(B1,B2,t):
+    print("The basis of the domain is\n",B1)
+    print("The basis of the codomain is\n ", B2)
+    W=[t(v) for v in B1]
+    U=[np.linalg.solve(B2.T,W[i]) for i in range(len(W))]
+    M=np.array(U)
+    print("The matrix of the linear transform is \n",M.T)
+    
+1.
+b1=np.array([[-1,1,0],[5,-1,2],[1,2,1]])
+b2=np.array([[1,1,0],[0,0,1],[1,5,2]])
+def t(v):
+    return (v[0]-v[1]+v[2],2*v[0]+3*v[1]-(1/2)*v[2],v[0]+v[1]-2*v[2])
+mat_of_lt(b1,b2,t)
+
+2.
+b1=np.array([[1,1],[0,1]])
+b2=np.array([[0,1],[1,2]])
+def t(v):
+    return (v[0]-v[1],v[0]+v[1])
+mat_of_lt(b1,b2,t)
