@@ -14,6 +14,7 @@ print("The images of the vectors in B1 are ",sumT0, sumT1)
 eq=np.array([u1[0]*c1+u2[0]*c2 , u1[1]*c1+u2[1]*c2])
 p,q=eq[0],eq[1]
 a=solve((p-x,q-y),c1,c2,dict=True)
+c1, c2= a[0][c1],a[0][c2]
 print("The coordinates of the vectors (x,y) w.r.t. B1 are ",c1,"and",c2)
 t=sumT0*c1+sumT1*c2
 print("The linear tranformation of T is T(x,y)= ",tuple(t))
